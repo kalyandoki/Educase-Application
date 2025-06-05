@@ -9,7 +9,7 @@ const LoginPage = () => {
           Signin to your PopX account
         </h1>
 
-        <p className="text-gray-800 text-md mb-6 text-center text-left">
+        <p className="text-gray-800 text-md mb-6  text-left">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
 
@@ -22,6 +22,7 @@ const LoginPage = () => {
             placeholder="Enter Email Address
 "
             className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
           />
         </div>
         <div className="mb-6">
@@ -30,6 +31,7 @@ const LoginPage = () => {
             type="password"
             placeholder="Enter Password"
             className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
           />
         </div>
 
