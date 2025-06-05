@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import ProfilePage from "../pages/ProfilePage"; // Assuming ProfilePage is in the same directory
+import React, { useState, useEffect } from "react";
+import ProfilePage from "../pages/ProfilePage";
+import LoginPage from "../pages/LoginPage";
 
 const SignUpPage = () => {
   const [isAgency, setIsAgency] = useState("yes");
@@ -14,17 +15,32 @@ const SignUpPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted with data:", signupData);
-    setSignupData({
-      name: signupData.name,
-      phone: signupData.phone,
-      email: signupData.email,
-      password: signupData.password,
-      companyName: signupData.companyName,
+
+    const dataToStore = {
+      ...signupData,
       isAgency: isAgency,
-    });
+      id: new Date().toISOString(),
+    };
+
+    console.log("Form submitted with data:", dataToStore);
+
+    localStorage.setItem("signupData", JSON.stringify(dataToStore));
+
+    setSignupData(dataToStore);
     setFormSubmitted(true);
   };
+
+  useEffect(() => {
+    const storedData = localStorage.getItem("signupData");
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      setSignupData(parsedData);
+      setIsAgency(parsedData.isAgency || "yes");
+    }
+  }, []);
+
+  const storedSignupData = JSON.parse(localStorage.getItem("signupData"));
+  <LoginPage signupData={storedSignupData} />;
 
   return (
     <>
@@ -41,7 +57,7 @@ const SignUpPage = () => {
               className="text-gray-800 text-md mb-6 text-left"
             >
               <div className="mb-4">
-                <label className="block text-gray-700 font-medium mb-1">
+                <label className="block text-[#6C25FF] font-medium mb-1">
                   Full Name <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -57,7 +73,7 @@ const SignUpPage = () => {
               </div>
 
               <div className="mb-4">
-                <label className="block text-gray-700 font-medium mb-1">
+                <label className="block text-[#6C25FF] font-medium mb-1">
                   Phone Number <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -73,7 +89,7 @@ const SignUpPage = () => {
               </div>
 
               <div className="mb-4">
-                <label className="block text-gray-700 font-medium mb-1">
+                <label className="block text-[#6C25FF] font-medium mb-1">
                   Email <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -89,7 +105,7 @@ const SignUpPage = () => {
               </div>
 
               <div className="mb-4">
-                <label className="block text-gray-700 font-medium mb-1">
+                <label className="block text-[#6C25FF] font-medium mb-1">
                   Password <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -107,7 +123,7 @@ const SignUpPage = () => {
               </div>
 
               <div className="mb-4">
-                <label className="block text-gray-700 font-medium mb-1">
+                <label className="block text-[#6C25FF] font-medium mb-1">
                   Company Name <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -126,7 +142,7 @@ const SignUpPage = () => {
               </div>
 
               <div className="mb-4">
-                <label className="block text-gray-700 font-medium mb-1">
+                <label className="block text-[#6C25FF] font-medium mb-1">
                   Are you an agency?<span className="text-red-500">*</span>
                 </label>
                 <div className="flex space-x-4 mt-1">

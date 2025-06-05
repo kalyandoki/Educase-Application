@@ -33,8 +33,10 @@ const ProfilePage = ({ signupData }) => {
               />
 
               <label htmlFor="profileUpload">
-                <div className="absolute bottom-1 right-1 bg-gray-800 p-2 rounded-full cursor-pointer">
-                  <FaCamera className="text-white text-sm" />
+                <div className="absolute bottom-1 right-1 p-1 rounded-full cursor-pointer">
+                  <div className="bg-[#6C25FF] shadow-md p-2 rounded-full">
+                    <FaCamera className="text-xl text-white rounded-4" />
+                  </div>
                   <input
                     type="file"
                     accept="image/*"
