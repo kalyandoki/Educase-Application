@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ProfilePage from "../pages/ProfilePage";
-import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const [storedSignupData, setStoredSignupData] = useState(null);
@@ -31,6 +30,7 @@ const LoginPage = () => {
     } else {
       alert("Invalid email or password");
     }
+    setLoginData({ email: "", password: "" });
   };
 
   if (isLoggedIn) {
