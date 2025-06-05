@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { FaCamera } from "react-icons/fa";
 
-const ProfilePage = () => {
+const ProfilePage = ({ signupData }) => {
+  console.log("ProfilePage signupData:", signupData);
+  const { name, email } = signupData;
   const [profileImage, setProfileImage] = useState(null);
 
   const handleImageChange = (e) => {
@@ -45,12 +47,8 @@ const ProfilePage = () => {
             </div>
 
             <div className="flex flex-col items-start">
-              <h2 className="text-xl font-semibold text-gray-800">
-                PavanKalyan Doki
-              </h2>
-              <p className="text-sm text-gray-600">
-                pavankalyandoki22@gmail.com
-              </p>
+              <h2 className="text-xl font-semibold text-gray-800">{name}</h2>
+              <p className="text-sm text-gray-600">{email}</p>
             </div>
           </div>
           <div className="bg-gray-100 text-gray-700 text-sm p-4 rounded-md">
