@@ -15,7 +15,7 @@ function Home() {
               Create Account
             </button>
           </Link>
-          <Link to="/signup">
+          <Link to="/login">
             <button className="w-full bg-[#bb46ce] text-gray-800 mt-5 py-3 rounded-lg font-semibold hover:bg-[rgb(217,110,205)] transition">
               Already Registered? Login
             </button>
