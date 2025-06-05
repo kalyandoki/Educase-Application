@@ -27,6 +27,15 @@ const SignUpPage = () => {
     localStorage.setItem("signupData", JSON.stringify(dataToStore));
 
     setSignupData(dataToStore);
+    setSignupData({
+      name: "",
+      phone: "",
+      email: "",
+      password: "",
+      companyName: "",
+    });
+
+    setIsAgency("yes");
     setFormSubmitted(true);
   };
 
@@ -45,7 +54,7 @@ const SignUpPage = () => {
   return (
     <>
       {formSubmitted ? (
-        <ProfilePage signupData={signupData} isAgency={isAgency} />
+        <ProfilePage signupData={storedSignupData} />
       ) : (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
           <div className="w-full max-w-[400px]">
